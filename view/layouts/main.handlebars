@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>Eat Da burgerz</title>
+	</head>
+	<body>
+		<h2>Eat Da Burgerz</h2>
+		<br><br>
+		{{{ not_eatten }}} {{{eatten}}}
+		<br><br>
+
+		<input type="text" id="new_burger"><br>
+
+		
+		<input type="submit" id="submit">
+		
+		<script type="text/javascript">
+
+			$( "#submit" ).click(function() {
+			  $.ajax({
+				  url: "/api/select",
+				  Method: "GET",
+				  data: {
+				  	new_burger: $("#new_burger"),
+				  	devoured: false;
+				  },
+				});
+			});
+
+			$( "#eat" ).click(function() {
+			  $.ajax({
+				  url: "/api/put",
+				  Method: "PUT",
+				  data: {
+				  	devoured: true;
+				  },
+				});
+			});
+		</script>
+		
+	</body>
+</html>
